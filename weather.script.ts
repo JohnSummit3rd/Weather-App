@@ -1,38 +1,14 @@
-function getWeatherDetails(latitude: number, longitude: number) {
-    const weatherAPIUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,daily,hourly&units=metric&appid=33fac16fc253265b6cab143ad7ddd351` 
-      fetch(weatherAPIUrl)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Network response was not ok.');
-        }
-        return res.json();
-      })
-      .then(data => console.log(data))
-      .catch(error => console.error('Problem', error));
-  }
+const apiKey = "33fac16fc253265b6cab143ad7ddd351";
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=singapore";
 
-function getGeoCoords(placeName: string) {
-  const geoAPIUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(placeName)}&key=ddfef92911994579b46dfad8a5946f6d`
-    fetch(geoAPIUrl)
-    .then(res => {
-      if (!res.ok) {
-        throw new Error('Network response was not ok.');
-      }
-      return res.json();
-    })
-    .then(data => {
-      const firstResult = data.results[0];
-      const { geometry } = firstResult;
-      const { lat, lng } = geometry;
+async function getWeather() {
+  const response = await fetch(apiUrl + `&appid=${apiKey}`);
+  var data = await response.json();
 
-      console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-    })
-    .catch(error => console.error('Problem with the request:', error));
+  console.log(data);
+
+  document.querySelector
 }
-  
-  const latitude = 39.9
-  const longitude = 116.4
 
-  const placeName = "Berlin"
-  console.log(getWeatherDetails(latitude, longitude));
-  console.log(getGeoCoords(placeName));
+
+getWeather();
