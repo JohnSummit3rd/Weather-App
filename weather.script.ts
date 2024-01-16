@@ -11,28 +11,22 @@ function getWeatherDetails(latitude: number, longitude: number) {
       .catch(error => console.error('Problem', error));
   }
 
-function getGeoCoords(placeName: string) {
-  const geoAPIUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(placeName)}&key=ddfef92911994579b46dfad8a5946f6d`
+/*function getGeoCoords(locationName: string) {
+  const geoAPIUrl = `https://maps.googleapis.com/maps/api/geocode/json?address:${location}&key=AIzaSyCxhP9WdIAb430dBIKjGAaLcJYs6DOZ4VI`;
     fetch(geoAPIUrl)
     .then(res => {
-      if (!res.ok) {
+      if(!res.ok) {
         throw new Error('Network response was not ok.');
       }
       return res.json();
     })
-    .then(data => {
-      const firstResult = data.results[0];
-      const { geometry } = firstResult;
-      const { lat, lng } = geometry;
-
-      console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-    })
-    .catch(error => console.error('Problem with the request:', error));
-}
+    .then(data => console.log(data))
+    .catch(error => console.error('Problem', error));
+}*/
   
   const latitude = 39.9
   const longitude = 116.4
 
-  const placeName = "Berlin"
+  const locationName = "Shanghai";
   console.log(getWeatherDetails(latitude, longitude));
-  console.log(getGeoCoords(placeName));
+  //console.log(getGeoCoords(locationName));
